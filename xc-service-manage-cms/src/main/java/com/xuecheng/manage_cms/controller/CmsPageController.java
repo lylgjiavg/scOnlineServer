@@ -20,10 +20,17 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/cms/page")
 public class CmsPageController implements CmsPageControllerApi {
-
+    
     @Autowired
-    CmsPageService cmsPageService;
+    private CmsPageService cmsPageService;
 
+    /**
+     * CMS页面信息分页条件查询:根据查询条件对页面信息进行分页查询
+     * @param page  页码
+     * @param size  每页显示数据量
+     * @param queryPageRequest  查询条件
+     * @return  页面分页数据信息
+     */
     @Override
     @GetMapping("/list/{page}/{size}")
     public QueryResponseResult findList(@PathVariable("page") int page, @PathVariable("size") int size, QueryPageRequest queryPageRequest) {
@@ -57,6 +64,13 @@ public class CmsPageController implements CmsPageControllerApi {
     public ResponseResult deleteByPageId(@PathVariable("pageId") String pageId) {
         
         return cmsPageService.deleteByPageId(pageId);
+    }
+
+    @Override
+    @PostMapping("/postPage/{pageId}")
+    public ResponseResult post(@PathVariable("pageId") String pageId) {
+        
+        return cmsPageService.post(pageId);
     }
 
 }

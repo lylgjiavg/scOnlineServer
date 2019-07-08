@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiOperation;
 @Api(value = "cms页面管理接口", description = "cms页面管理接口，提供页面的增、删、改、查")
 public interface CmsPageControllerApi {
 
-    @ApiOperation("分页查询页面列表")
+    @ApiOperation("CMS页面信息分页条件查询:根据查询条件对页面信息进行分页查询")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", value = "页码", required = true, paramType = "path", dataType = "int"),
             @ApiImplicitParam(name = "size", value = "每页记录数", required = true, paramType = "path", dataType = "int"),
@@ -51,5 +51,11 @@ public interface CmsPageControllerApi {
             @ApiImplicitParam(name = "pageId", value = "页面Id(pageId)", required = true, paramType = "path", dataType = "String"),
     })
     ResponseResult deleteByPageId(String pageId);
+    
+    @ApiOperation("发布页面")
+    /*@ApiImplicitParams({
+            @ApiImplicitParam(name = "pageId", value = "页面Id(pageId)", required = true, dataType = "String"),
+    })*/
+    ResponseResult post(String pageId);
     
 }
