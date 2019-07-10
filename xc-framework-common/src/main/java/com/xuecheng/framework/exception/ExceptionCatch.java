@@ -51,6 +51,7 @@ public class ExceptionCatch {
      * @param exception
      * @return
      */
+    /*  测试阶段关闭(否则无法显示异常信息,不利于debug)
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public ResponseResult exception(Exception exception){
@@ -69,7 +70,7 @@ public class ExceptionCatch {
             // 未找到对应错误类型,返回99999错误代码
             return new ResponseResult(CommonCode.SERVER_ERROR);
         }
-    }
+    }*/
     
     
     
